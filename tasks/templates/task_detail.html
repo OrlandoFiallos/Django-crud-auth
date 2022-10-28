@@ -1,0 +1,48 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row text-center mt-5">
+        <h2>Task Detail </h2>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-6 card mt-5 p-3">
+            <h3>{{task.title}}</h3>
+            <div class="text-danger">
+                {{error}}
+            </div>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button class="btn btn-light mb-2">Update</button>
+            </form>
+            <div class="d-flex ">
+                <form class="mr-5" action="{% url 'completed_task' task.id %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-light mb-2 ">Complete</button>
+                </form>
+                <form class="ms-2" action="{% url 'deleted_task' task.id %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-light mb-2  ">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <h1>Geek Detailer</h1>
+<h1>{{task.title}}</h1>
+<p>{{error}}</p>
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>Update</button>
+</form>
+<form action="{% url 'completed_task' task.id %}" method="post">
+    {% csrf_token %}
+    <button>Complete</button>
+</form>
+<form action="{% url 'deleted_task' task.id %}" method="post">
+    {% csrf_token %}
+    <button>Delete</button>
+</form> -->
+{% endblock %}

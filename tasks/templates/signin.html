@@ -1,0 +1,36 @@
+{% extends 'navbar.html' %}
+{% block content %}
+<!-- <h1>Sign IN</h1>
+{{error}}
+<form action="/signin/" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>
+        Sign In
+    </button>
+</form> -->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-4 card  mt-5 p-3">
+            <form action="/signin/"method="post">
+                {% csrf_token %}
+                <h2 class="text-center">Sign in</h2>
+                <div class="text-danger">
+                    {{error}}
+                  </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username:</label>
+                    <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp"
+                        placeholder='Write your username'>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password:</label>
+                    <input type="password" class="form-control" name="password" id="password"
+                        placeholder='Enter your password'>
+                </div>
+                <button class="btn btn-light">Sign in</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

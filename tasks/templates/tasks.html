@@ -1,0 +1,62 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+
+<!-- <h1></h1>
+<ul>
+
+    {% for task in tasks %}
+    
+    <li>
+        <a href="{% url 'task_detail' task.id %}">
+            
+                {% if task.important %}
+                <strong>{{task.title}}</strong>
+                {% else %}
+                    {{task.title}}
+                {% endif %}
+        
+                <p>{{task.description}}</p>
+                <p>{{task.user.username}}</p>
+                <p>{{task.datecompleted|date:'M j Y:i'}}</p>
+                
+            
+        </a>
+
+    </li>
+    
+    {% endfor %}
+</ul> -->
+<div class="container">
+    <div class="row text-center mb-5 mt-5">
+        <h1>{{title}}</h1>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-8">
+
+            <ol class="list-group ">
+                {% for task in tasks %}
+                <li class="list-group-item p-5 table-hover">
+                    <a class="text-decoration-none text-dark" href="{% url 'task_detail' task.id %}">
+                        <div class="d-flex justify-content-between">
+                            {% if task.important %}
+                            <h5>
+                                <strong>{{task.title}}</strong>
+                            </h5>
+                            {% else %}
+                            {{task.title}}
+                            {% endif %}
+                        <div>{{task.user.username}}</div>
+                        </div>
+                        <div>{{task.description}}</div>
+                        <div>{{task.datecompleted|date:'M j Y:i'}}</div>
+                
+                
+                    </a>
+                </li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+</div>
+{% endblock %}
